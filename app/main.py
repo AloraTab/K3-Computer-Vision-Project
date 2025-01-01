@@ -13,7 +13,7 @@ app = FastAPI(
 )
 
 # Load YOLO model
-model = YOLO("obj-det-weighted.pt")  # Replace with your actual .pt file path
+model = YOLO("app/obj-det-weighted.pt") 
 
 @app.get("/")
 async def root():
