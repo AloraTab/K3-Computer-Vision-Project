@@ -1,0 +1,13 @@
+train: dataset/train/images
+val: dataset/valid/images
+test: dataset/test/images
+
+nc: 3
+names: ['helmet', 'mask', 'vest']
+
+roboflow:
+  workspace: knowledgeflex-technologies-pvtltd
+  project: k3-ujjlm-ap6dh-enk7q
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/knowledgeflex-technologies-pvtltd/k3-ujjlm-ap6dh-enk7q/dataset/1
