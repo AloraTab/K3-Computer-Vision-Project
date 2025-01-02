@@ -21,3 +21,10 @@ However, what worked best was using the Weighted Dataloader provided by [Yasin's
 | helmet  | 14     | 21        | 1       | 0.988 | 0.995 | 0.741    |
 | mask    | 7      | 14        | 1       | 0.657 | 0.897 | 0.61     |
 | vest    | 9      | 14        | 0.828   | 0.857 | 0.808 | 0.62     |
+
+
+## Problems I Faced
+
+I faced issues during the model training, where I struggled to get the mean Average Precision to be over 0.5. Trying out different data augmentation, class balancing methods, was also a learning experience for me on this dataset.
+
+Another problem faced was just general build issues - things would work locally but the container wouldn't start or the requirements.txt was missing some dependencies. Overall, I spent a lot more time looking through the documentation and guides from FastAPI, Docker and YOLO.
