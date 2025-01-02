@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from ultralytics import YOLO
 from PIL import Image
 import io
@@ -8,18 +9,27 @@ import numpy as np
 # Initialize FastAPI
 app = FastAPI(
     title="YOLO Model API",
-    description="API to perform inference using a pretrained YOLO model",
+    description="API to perform inference using a pretrained YOLO model. Use the `/predict/` endpoint to upload an image and get predictions.",
     version="1.0.0"
 )
 
+# Add CORS middleware for broader access, if needed
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Load YOLO model
-model = YOLO("app/obj-det-weighted.pt") 
+model = YOLO("app/obj-det-weighted.pt")  # Ensure the model path is correct
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the YOLO Model API!"}
+    return {"message": "Welcome to the YOLO Model API! Visit `/docs` for SwaggerUI."}
 
-@app.post("/predict/")
+@app.post("/predict/", summary="Predict using YOLO model", description="Upload an image file to perform object detection.")
 async def predict(file: UploadFile = File(...)):
     """
     Upload an image for YOLO model prediction.
