@@ -39,11 +39,11 @@ async def predict(file: UploadFile = File(...)):
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert("RGB")
 
-        # Convert image to numpy for YOLO inference
-        np_image = np.array(image)
+        # # Convert image to numpy for YOLO inference
+        # np_image = np.array(image)
 
         # Perform inference
-        results = model.predict(np_image)
+        results = model.predict(image)
 
         # Parse results
         predictions = []
